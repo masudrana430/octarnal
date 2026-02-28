@@ -18,24 +18,24 @@ export default function Login() {
     try {
       await login(email, password);
       nav("/dashboard");
-    } catch (e) {
-      setErr(e?.response?.data?.message || "Login failed. Check credentials / API.");
+    } catch (e2) {
+      setErr(e2?.response?.data?.message || "Login failed.");
     } finally {
       setLoading(false);
     }
   }
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex items-center justify-center p-4">
-      <div className="w-full max-w-md rounded-2xl bg-slate-900/60 border border-slate-800 shadow-xl p-6">
-        <h1 className="text-2xl font-semibold">Sign in</h1>
-        <p className="text-sm text-slate-400 mt-1">Use your account to access the dashboard.</p>
+    <div className="min-h-screen bg-[#f5f6f7] flex items-center justify-center p-4">
+      <div className="w-full max-w-md rounded-2xl bg-white border border-slate-200 p-6 shadow-sm">
+        <h1 className="text-2xl font-semibold text-slate-900">Sign in</h1>
+        <p className="text-sm text-slate-500 mt-1">Login to access your dashboard.</p>
 
         <form onSubmit={onSubmit} className="mt-6 space-y-4">
           <div>
-            <label className="text-sm text-slate-300">Email</label>
+            <label className="text-sm text-slate-600">Email</label>
             <input
-              className="mt-1 w-full rounded-xl bg-slate-950/60 border border-slate-800 px-3 py-2 outline-none focus:ring-2 focus:ring-slate-500"
+              className="mt-1 w-full rounded-xl border border-slate-200 bg-white px-3 py-2 outline-none focus:ring-2 focus:ring-emerald-200"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               type="email"
@@ -44,9 +44,9 @@ export default function Login() {
           </div>
 
           <div>
-            <label className="text-sm text-slate-300">Password</label>
+            <label className="text-sm text-slate-600">Password</label>
             <input
-              className="mt-1 w-full rounded-xl bg-slate-950/60 border border-slate-800 px-3 py-2 outline-none focus:ring-2 focus:ring-slate-500"
+              className="mt-1 w-full rounded-xl border border-slate-200 bg-white px-3 py-2 outline-none focus:ring-2 focus:ring-emerald-200"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               type="password"
@@ -54,12 +54,15 @@ export default function Login() {
             />
           </div>
 
-          {err && <div className="text-sm text-red-300 bg-red-950/40 border border-red-900 rounded-xl p-3">{err}</div>}
+          {err && (
+            <div className="text-sm text-red-700 bg-red-50 border border-red-200 rounded-xl p-3">
+              {err}
+            </div>
+          )}
 
           <button
             disabled={loading}
-            className="w-full rounded-xl bg-slate-100 text-slate-950 py-2 font-medium
-                       hover:opacity-90 transition disabled:opacity-60"
+            className="w-full rounded-xl bg-emerald-700 text-white py-2 font-medium hover:bg-emerald-800 disabled:opacity-60"
           >
             {loading ? "Signing in..." : "Sign In"}
           </button>
