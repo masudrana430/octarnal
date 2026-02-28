@@ -1,6 +1,7 @@
 import React from "react";
 import { useOutletContext } from "react-router-dom";
 import { Card, StatCard, ProjectAnalytics, Projects, TeamCollaboration, TimeTrackerCard } from "../ui/widgets";
+import LoadingSpinner from "./LoadingSpinner";
 
 export default function DashboardHome() {
   const { data, loading, err, localProjects } = useOutletContext();
@@ -8,7 +9,7 @@ export default function DashboardHome() {
   const analytics = data?.analytics || [];
   const users = data?.users || [];
 
-  if (loading) return <Card className="mt-6">Loading dashboard…</Card>;
+  if (loading) return <Card className="mt-6"><LoadingSpinner /></Card>;
   if (err) return <Card className="mt-6 border-red-200">{err}</Card>;
 
   return (
