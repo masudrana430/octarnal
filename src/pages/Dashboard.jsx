@@ -21,6 +21,7 @@ import {
 
 import { api } from "../lib/api";
 import { useAuth } from "../context/AuthContext";
+import LoadingSpinner from "./LoadingSpinner";
 
 export default function Dashboard() {
   const { user, logout } = useAuth();
@@ -98,7 +99,9 @@ export default function Dashboard() {
 
           {loading && (
             <Card className="mt-6">
-              <div className="text-sm text-slate-500">Loading data from REST API…</div>
+              <div className="flex flex-col items-center gap-4 py-10">
+                <LoadingSpinner />
+              </div>
             </Card>
           )}
 
@@ -188,7 +191,6 @@ export default function Dashboard() {
                 </div>
               </div>
 
-              {/* Optional: show API summary, helps debugging */}
               
             </>
           )}
