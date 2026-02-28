@@ -1,6 +1,6 @@
 import React from "react";
 import { useOutletContext } from "react-router-dom";
-import { Card, StatCard, ProjectAnalytics, Projects, TeamCollaboration, TimeTrackerCard } from "../ui/widgets";
+import { Card, StatCard, ProjectAnalytics, Projects, TeamCollaboration, TimeTrackerCard, ProjectProgressWidget } from "../ui/widgets";
 import LoadingSpinner from "./LoadingSpinner";
 
 export default function DashboardHome() {
@@ -43,7 +43,8 @@ export default function DashboardHome() {
         <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-4">
           <TimeTrackerCard />
           <Card>
-            <div className="text-sm text-slate-600"></div>
+            <div className="text-sm font-semibold mb-3">Project Progress</div>
+            <ProjectProgressWidget percent={41} label="Project Ended" />
           </Card>
         </div>
       </div>
